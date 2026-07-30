@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nora 💗</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+ <style> 
+ 
+ *{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+ font-family:Vazirmatn,sans-serif;
+ -webkit-tap-highlight-color:transparent
+ }
+ 
+ body{
+ background:#fccfe2;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ min-height:100vh;
+ padding:20px
+ }
+ 
+ .card{
+ background:#fff;
+ width:100%;
+ max-width:340px;
+ border-radius:15px;
+ padding:35px 25px;
+ text-align:center;
+ box-shadow:0 10px 30px rgba(0,0,0,.08)
+ }
+ 
+ .icon{font-size:70px}
+ h2{
+ margin:15px 0 8px;
+ color:#f06292;
+ font-size:28px
+ }
+ 
+ p{
+ color:#888;
+ font-size:15px;
+ margin-bottom:28px
+ }
+ 
+ .buttons{
+ display:flex;
+ justify-content:center;
+ gap:12px
+ }
+ button{
+ border:none;
+ border-radius:12px;
+ height:52px;padding:0 28px;
+ font-size:17px;
+ font-weight:700;
+ cursor:pointer;
+ transition:.12s
+ }
+ 
+ #yes{background:#f48fb1;color:#fff;}
+ #no{background:#fff;color:#666;border:1px solid #eee}
+ #done{display:none}
+ 
+ </style>
+</head>
+<body>
+
+<div class="card">
+<div id="question">
+
+<div class="icon">💖</div>
+<h2>منو دوست داری؟</h2>
+<p>بعدش یک کدوم از گزینه های زیر رو انتخاب کن</p>
+
+<div class="buttons">
+<button id="yes">معلومه</button>
+<button id="no">اصلا</button>
+</div>
+
+</div>
+
+<div id="done">
+
+<div class="icon">🌸</div>
+<h2>منم خیلی دوست دارم</h2>
+<p>کوچولوی خوشگل و خوشتیپ هستی🍓🫧</p>
+
+</div>
+</div>
+
+<script>
+const yes=document.getElementById("yes");
+const no=document.getElementById("no");
+
+let y=1,n=1;
+
+no.onclick=()=>{
+y+=0.8;
+n-=0.25;
+if(n<0.05)n=.05;
+yes.style.transform=`scale(${y})`;
+no.style.transform=`scale(${n})`;
+};
+
+yes.onclick=()=>{
+
+document.getElementById("question").style.display="none";
+document.getElementById("done").style.display="block";
+
+
+const heart=confetti.shapeFromText({
+text:"💖",
+scalar:2
+});
+
+const star=confetti.shapeFromText({
+text:"⭐",
+scalar:2
+});
+
+
+confetti({
+particleCount:100,
+spread:100,
+startVelocity:45,
+origin:{y:.6},
+shapes:[heart,star]
+});
+
+
+const end=Date.now()+4000;
+
+
+(function rain(){
+
+confetti({
+particleCount:3,
+spread:120,
+startVelocity:20,
+gravity:.8,
+scalar:1.5,
+origin:{
+x:Math.random(),
+y:0
+},
+shapes:[heart,star]
+});
+
+
+if(Date.now()<end){
+requestAnimationFrame(rain);
+}
+
+})();
+
+};
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</body>
+</html>
