@@ -324,11 +324,19 @@ next5.onclick=()=>{
 
 show(page6);
 
+const stars = [
+    confetti.shapeFromText({text:"⭐", scalar:2}),
+    confetti.shapeFromText({text:"✨", scalar:2}),
+    confetti.shapeFromText({text:"💫", scalar:2})
+];
+
 confetti({
-particleCount:100,
-spread:100,
-startVelocity:45,
-origin:{y:.6}
+    particleCount:100,
+    spread:140,
+    startVelocity:50,
+    origin:{y:.5},
+    shapes:stars,
+    scalar:1.3
 });
 
 };
