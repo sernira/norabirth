@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Nora 💗</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
- <style> 
+
+ <style>
  
  *{
  margin:0;
@@ -34,7 +35,10 @@
  box-shadow:0 10px 30px rgba(0,0,0,.08)
  }
  
- .icon{font-size:70px}
+ .icon{
+ font-size:69px
+ }
+ 
  h2{
  margin:15px 0 8px;
  color:#f06292;
@@ -44,7 +48,18 @@
  p{
  color:#888;
  font-size:15px;
- margin-bottom:28px
+ margin-bottom:22px
+ }
+ 
+ input,select{
+ width:100%;
+ height:52px;
+ border:1px solid #eee;
+ border-radius:12px;
+ padding:0 14px;
+ font-size:16px;
+ margin-bottom:12px;
+ outline:none
  }
  
  .buttons{
@@ -52,115 +67,278 @@
  justify-content:center;
  gap:12px
  }
+ 
  button{
+ height:52px;
+ padding:0 28px;
  border:none;
  border-radius:12px;
- height:52px;padding:0 28px;
+ background:#f48fb1;
+ color:#fff;
  font-size:17px;
  font-weight:700;
  cursor:pointer;
  transition:.12s
  }
  
- #yes{background:#f48fb1;color:#fff;}
- #no{background:#fff;color:#666;border:1px solid #eee}
- #done{display:none}
+ .option{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ width:100%;
+ padding:14px 16px;
+ margin-bottom:10px;
+ background:#fff;
+ border:2px solid #f3c1d3;
+ border-radius:12px;
+ font-size:16px;
+ font-weight:400;
+ color:#555;
+ text-align:right;
+ cursor:pointer;
+ transition:.2s
+ }
  
- </style>
+ .option:hover{
+ border-color:#f48fb1;
+ background:#fdf0f5
+ }
+ 
+ .option .box{
+ width:22px;
+ height:22px;
+ min-width:22px;
+ border:2px solid #ccc;
+ border-radius:6px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:14px;
+ color:transparent;
+ transition:.2s
+ }
+ 
+ .option.checked{
+ border-color:#f06292;
+ background:#fce4ec
+ }
+ 
+ .option.checked .box{
+ border-color:#f06292;
+ background:#f06292;
+ color:#fff
+ }
+ 
+ #next5{
+ width:100%;
+ margin-top:8px
+ }
+ 
+ #no{
+ background:#fff;
+ color:#666;
+ border:1px solid #eee
+ }
+ 
+ #error{
+ display:none;
+ color:#e53935
+ }
+ 
+ .page{
+ display:none
+ }
+ 
+ #page1{
+ display:block
+ }
+
+</style>
 </head>
 <body>
-
 <div class="card">
-<div id="question">
+<!-- ==================== PAGE 1 ==================== -->
+<div class="page" id="page1">
+<div class="icon">🔑</div>
+<h2>تاریخ آشنایی</h2>
+<p>برای جلوگیری از فضولی بقیه تاریخ رو وارد کن</p>
+<input id="day" type="number" min="1" max="31" placeholder="روز">
 
+<select id="month">
+<option value="">ماه میلادی</option>
+<option>January</option>
+<option>February</option>
+<option>March</option>
+<option>April</option>
+<option>May</option>
+<option>June</option>
+<option>July</option>
+<option>August</option>
+<option>September</option>
+<option>October</option>
+<option>November</option>
+<option>December</option>
+</select>
+
+<button id="check">ادامه</button>
+<p style="margin-top:10px;" id="error">اشتباهه</p>
+</div>
+<!-- ==================== PAGE 2 ==================== -->
+<div class="page" id="page2">
+<div class="icon">🤖</div>
+<h2>تایید ربات نبودن</h2>
+<p>برای اینکه ربات ها نیان باید روی دکمه زیر بزنی</p>
+<button id="captcha">من امیر رو خیلی دوست دارم 💞</button>
+</div>
+<!-- ==================== PAGE 3 ==================== -->
+<div class="page" id="page3">
+<div class="icon">👈👉🥺</div>
+<h2>معذرت خواهی</h2>
+<p style="text-align:right;">سلام نورا خانوم<br><br>
+اول میخوام بگم که من و مقنی که امروز بحث سیاسی کردیم و این چیزیه که همیشه بین خودمون بوده و بار اول و دوم هم نیست. خودمون هم میدونیم که این بحث ها بی هدفه و داریم چرت میگیم و حتی حرف هایی میزنیم که چند دقیقه بعد یادمون نمیمونه و هیچ وقتم از دست هم ناراحت نمیشیم.<br><br>
+امروز هم مقنی گفت از اینکه چند نفر دیگه (منظورش اون دو نفر) اومدن وسط بحث خوشش نیومده و هم من و اون به حجت گفتیم که اونارو از گروه بندازه بیرون
+نه من و نه مقنی فکر نمیکردیم شما اینقدر موضوع رو جدی بگیری چون خودمون هم جدی نمیگیریم و توی این دو سال حتی یکبارم باهم بحث سیاسی نکردیم.<br><br>
+اسم نمیارم اما کسایی هستن از شماهم نظرات سیاسی خیلی تندتری دارن اما هیچ وقت اینجوری رفتار نمیکنن. حالا تصور کن جای من و شما برعکس بود و من چنین کاری میکردم شما چه حسی پیدا میکردی؟<br>
+و بابت رفتار شما توی گروه خیلی هم خجالت زده شدم اما چون خیلی دوست دارم اومدم اینو برای رفع دلخوری ها نوشتم.<br><br>
+من از همون روزی که با شما آشنا شدم کلا سیاست رو گذاشتم کنار و هرچی هم بوده فقط بین من و مقنی جهت کل کل و شوخی بوده نه بحث جدی. در هر صورت بابت حرف های نامناسبی که زدم معذرت میخوام.<br><br>
+نکته بعدی اینکه قربون شما بشم که از صبح سه بار خون دماغ شدی ملوسک و هی شما بنده روهم اذیت میکنی.<br><br>
+اگه بخشیدی از بلاک هم در بیار :) و شماهم با دکمه زیر ازم معذرت خواهی کن.</p>
+<button id="next3">منم معذرت میخوام</button>
+</div>
+<!-- ==================== PAGE 4 ==================== -->
+<div class="page" id="page4">
 <div class="icon">💖</div>
-<h2>منو دوست داری؟</h2>
-<p>بعدش یک کدوم از گزینه های زیر رو انتخاب کن</p>
-
+<h2>هنوزم منو دوست داری؟</h2>
+<p>یکی از گزینه‌ها را انتخاب کن</p>
 <div class="buttons">
 <button id="yes">معلومه</button>
 <button id="no">اصلا</button>
 </div>
+</div>
+<!-- ==================== PAGE 5 ==================== -->
+<div class="page" id="page5">
+<div class="icon">📝</div>
+<h2>چقدر؟</h2>
+<p>حالا که هم منو دوست داری و هم منو بخشیدی انتخاب کن چقدر دوست داری.</p>
+<div class="option"><span class="box">✓</span>خیلی کم دوست دارم</div>
+<div class="option"><span class="box">✓</span>یک کوچولو دوست دارم</div>
+<div class="option"><span class="box">✓</span>معمولی دوست دارم</div>
+<div class="option" id="last"><span class="box">✓</span>خیلی زیاد عاشقتم ✨</div>
+<button id="next5">ادامه</button>
 
 </div>
-
-<div id="done">
-
+<!-- ==================== PAGE 6 ==================== -->
+<div class="page" id="page6">
 <div class="icon">🌸</div>
-<h2>منم خیلی دوست دارم</h2>
-<p>کوچولوی خوشگل و خوشتیپ هستی🍓🫧</p>
+<h2>منم خیلی شمارو دوست دارم</h2>
+<p>چه دختر عالی شما هستی جیگرطلا هیچکس به ستاره های شما توجه نکرد اما من واست صفحه ی ستاره ای درست کردم بزن روی دکمه زیر تا ببینیش (بازم امیره که به شما توجه میکنه)<br>البته که زیباترین ستاره ی دنیا شما هستی 💫🍓</p>
+<button id="stars">بزن بریم</button>
+</div>
 
 </div>
-</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
 <script>
-const yes=document.getElementById("yes");
-const no=document.getElementById("no");
+// ---------- PAGE CHANGE ----------
 
-let y=1,n=1;
+function show(page){
+
+document.querySelectorAll(".page").forEach(x=>x.style.display="none");
+page.style.display="block";
+
+}
+
+
+// ---------- PAGE 1 ----------
+
+check.onclick=()=>{
+
+if(day.value=="3"&&month.value=="May"){
+show(page2);
+}else{
+error.style.display="block";
+}
+
+};
+
+
+// ---------- PAGE 2 ----------
+
+captcha.onclick=()=>{
+
+show(page3);
+
+};
+
+
+// ---------- PAGE 3 ----------
+
+next3.onclick=()=>{
+
+show(page4);
+
+};
+
+
+// ---------- PAGE 4 ----------
+
+let y=1;
+let n=1;
 
 no.onclick=()=>{
-y+=0.8;
-n-=0.25;
-if(n<0.05)n=.05;
+
+y+=.8;
+n-=.25;
+
+if(n<.05)n=.05;
+
 yes.style.transform=`scale(${y})`;
 no.style.transform=`scale(${n})`;
+
 };
+
 
 yes.onclick=()=>{
 
-document.getElementById("question").style.display="none";
-document.getElementById("done").style.display="block";
+show(page5);
+
+};
 
 
-const heart=confetti.shapeFromText({
-text:"💖",
-scalar:2
+// ---------- PAGE 5 ----------
+
+document.querySelectorAll(".option").forEach(x=>{
+
+x.onclick=()=>{
+
+document.querySelectorAll(".option").forEach(o=>o.classList.remove("checked"));
+last.classList.add("checked");
+
+};
+
 });
 
-const star=confetti.shapeFromText({
-text:"⭐",
-scalar:2
-});
 
+next5.onclick=()=>{
+
+show(page6);
 
 confetti({
 particleCount:100,
 spread:100,
 startVelocity:45,
-origin:{y:.6},
-shapes:[heart,star]
+origin:{y:.6}
 });
-
-
-const end=Date.now()+4000;
-
-
-(function rain(){
-
-confetti({
-particleCount:3,
-spread:120,
-startVelocity:20,
-gravity:.8,
-scalar:1.5,
-origin:{
-x:Math.random(),
-y:0
-},
-shapes:[heart,star]
-});
-
-
-if(Date.now()<end){
-requestAnimationFrame(rain);
-}
-
-})();
 
 };
-</script>
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+stars.onclick=()=>{
+
+window.location.href="stars.html";
+
+};
+
+</script>
 </body>
 </html>
