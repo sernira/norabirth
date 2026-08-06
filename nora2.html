@@ -1,22 +1,150 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فاک یو حجت</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 60px;
-            font-weight: bold;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+<title>Nora 💗</title>
+ <style>
+ *{box-sizing:border-box}
+body{
+ margin:0;
+ height:100vh;
+ overflow:hidden;
+ background:#000;
+ color:#fff;
+ font-family:Vazirmatn,sans-serif;
+ display:flex;
+ justify-content:center;
+ align-items:center
+}
+button{
+ background:#fc3f92;
+ color:#fff;
+ border:0;
+ padding:15px 45px;
+ border-radius:30px;
+ font:18px Vazirmatn,sans-serif;
+ cursor:pointer;
+ transition:.3s
+}
+button:active{transform:scale(.95)}
+#text{
+ position:absolute;
+ width:90%;
+ text-align:center;
+ font-size:22px;
+ line-height:2;
+ opacity:0;
+ transform:translateY(12px);
+ transition:.45s ease
+}
+#intro{
+ position:absolute;
+ top:35%;
+ text-align:center;
+ font-size:20px;
+ line-height:2.2;
+ color:#e0e0e0;
+ max-width:85%;
+ opacity:0;
+ transition:opacity .6s ease;
+}
+#start{
+ margin-top:20px;
+}
+#text.show{opacity:1;transform:translateY(0)}
+#notice{
+ position:absolute;
+ top:25%;
+ right:-100%;
+ white-space:nowrap;
+ font-size:18px;
+ opacity:0
+}
+#notice.go{animation:move 9s linear forwards}
+@keyframes move{
+ from{right:-100%;opacity:1}
+ to{right:100%;opacity:1}
+}
+</style>
 </head>
 <body>
-    حجت کون لقت
+<button id="begin">بزن بریم</button>
+
+<p id="intro" style="display:none;"></p>
+<button id="start" style="display:none;">دوباره بریم</button>
+
+<div id="notice">کیرم توی رونالدو تخمی</div>
+<div id="text"></div>
+<audio id="music" src="an.mp3"></audio>
+
+<script>
+const lines=[
+[0,6.9,"چیه راز پنهون چشمات که<br>نمیتونه بشه کسی تکرارت"],
+[6.9,11.21,"کی آخه شبیه تو بی اشکاله"],
+[12.9,16,"کاشکی یه روزی دوباره پیدات شه"],
+[16,19.02,"تکست بدی قرارمون کی باشه"],
+[19.02,23.28,"مثه قدیما بشه باز احساست"],
+[24.44,27.3,"جا گذاشتم یه روز تموم قلبمو پیشت"],
+[27.3,33.45,"تا نیاد تو زندگیم دیگه جز تو هیچ عشقی<br>و برت گردونم یه روزی هرطوری شه"],
+[36.24,39.26,"تو هم به جاش منو سپردی به خاطره هات"],
+[39.26,42.26,"نصفه نیمه موند بعد من همه رابطه هات"],
+[42.26,45.5,"کسی نمیریزه مثله من دنیاشو به پات که"],
+[48.28,51.28,"منو لا به لای خاطره هات پیدام کن"],
+[51.28,54.24,"نبند رو اون روزای خوب چشماتو"],
+[54.24,58.08,"نگو ندیدی اون همه احساسو"]
+];
+
+const begin=document.querySelector("#begin"),
+intro=document.querySelector("#intro"),
+btn=document.querySelector("#start"),
+text=document.querySelector("#text"),
+music=document.querySelector("#music"),
+notice=document.querySelector("#notice");
+
+let old=-1,noticeShown=false;
+
+begin.onclick=()=>{
+ begin.style.display="none";
+ intro.innerHTML="خیلی بی احساس زدی دوباره بزن";
+ intro.style.display="block";
+ intro.style.opacity=1;
+ btn.style.display="inline-block";
+};
+
+btn.onclick=()=>{
+ intro.style.display="none";
+ btn.style.display="none";
+ music.play();
+ updateText();
+};
+
+function updateText(){
+ let t=music.currentTime,now=-1;
+
+ for(let i=0;i<lines.length;i++)
+  if(t>=lines[i][0]&&t<lines[i][1]){
+   now=i;
+   break;
+  }
+
+ if(now!==old){
+  old=now;
+  text.classList.remove("show");
+
+  setTimeout(()=>{
+   text.innerHTML=now>=0?lines[now][2]:"";
+   if(now>=0)text.classList.add("show");
+  },200);
+ }
+
+ if(t>=20&&!noticeShown){
+  noticeShown=true;
+  notice.classList.add("go");
+ }
+}
+music.addEventListener("timeupdate",updateText);
+</script>
 </body>
 </html>
